@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitud de Crédito Bancario</title>
+    <script>
+        function verificarCredito() {
+            const edad = parseInt(document.getElementById('edad').value, 10);
+            const salario = parseFloat(document.getElementById('salario').value);
+            if (isNaN(edad) || isNaN(salario)) {
+                alert('Por favor, ingresa valores válidos para la edad y el salario.');
+                return;
+            }
+            let mensaje = '';
+            if (edad > 25 && salario > 3000) {
+                mensaje = 'Puedes aplicar a un crédito bancario.';
+            } else {
+                mensaje = 'No cumples con los requisitos para aplicar a un crédito bancario.';
+            }
+            document.getElementById('resultado').innerText = mensaje;
+        }
+    </script>
+</head>
+<body>
+    <h1>Verificación de Crédito Bancario</h1>
+    <form onsubmit="event.preventDefault(); verificarCredito();">
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" required>
+        <br><br>
+        <label for="salario">Salario Mensual:</label>
+        <input type="number" id="salario" step="any" required>
+        <br><br>
+        <input type="submit" value="Verificar Crédito">
+    </form>
+    <p id="resultado"></p>
+</body>
+</html>
